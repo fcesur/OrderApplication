@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static util.constant.BigDecimalCompareConstants.LESS;
+
 public class SectorServiceImpl implements SectorService {
 
     private final SectorRepository sectorRepository;
@@ -41,7 +43,8 @@ public class SectorServiceImpl implements SectorService {
                         s.getCompanies()
                                 .stream()
                                 .filter(c ->
-                                        c.getAverageInvoice().compareTo(amount) < 0)
+                                        c.getAverageInvoice().compareTo(amount) == LESS
+                                )
                                 .map(c -> c.getSector())
                 )
                 .collect(Collectors.toSet());
