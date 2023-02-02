@@ -12,7 +12,9 @@ import java.util.Set;
 public class Main {
 
     static CompanyService companyService = new CompanyServiceImpl(new CompanyRepositoryImpl());
+
     static SectorService sectorService = new SectorServiceImpl(new SectorRepositoryImpl());
+
     static CustomerService customerService = new CustomerServiceImpl(new CustomerRepositoryImpl());
 
     static ProductService productService = new ProductServiceImpl(new ProductRepositoryImpl());
