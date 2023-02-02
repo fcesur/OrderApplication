@@ -23,71 +23,79 @@ public class Main {
 
         createRelations();
 
-        System.out.println("******** All Customers **********");
+
         printAllCustomers();
 
-        System.out.println("\n******** Customers Starts With 'C' **********");
+
         printCustomersStartsWithLetter("C");
 
-        System.out.println("\n******** Total Invoices By Customer Registration Month : JUNE **********");
+
         printTotalInvoicesByCustomerRegistrationMonth(Month.JUNE);
 
-        System.out.println("\n******** Get All Invoices **********");
+
         printAllInvoices();
 
-        System.out.println("\n******** Get Invoices Over Amount : 1500 **********");
+
         printInvoicesOverAmount(BigDecimal.valueOf(1500));
 
-        System.out.println("\n******** Get Average of Invoices Over Amount : 1500 **********");
+
         printAverageOfInvoicesOverAmount(BigDecimal.valueOf(1500));
 
-        System.out.println("\n******** Get Customers Have Invoices Under Amount : 500 **********");
+
         printCustomersHaveInvoicesOverAmount(BigDecimal.valueOf(500));
 
-        System.out.println("\n******** Get Sectors of Companies Have Under Average Amount of Invoices : 750 **********");
+
         printSectorsOfCompaniesHaveUnderAverageAmountOfInvoices(BigDecimal.valueOf(750));
 
     }
 
     public static void printAllCustomers() {
+        System.out.println("******** All Customers **********");
         customerService.getAll().stream().forEach(c ->
                 System.out.println(c.getName())
         );
     }
 
     public static void printCustomersStartsWithLetter(String letter) {
+        System.out.println("\n******** Customers Starts With 'C' **********");
         customerService.getCustomersStartsWithLetter(letter).stream().forEach(c ->
                 System.out.println(c.getName())
         );
     }
 
     public static void printTotalInvoicesByCustomerRegistrationMonth(Month month) {
+        System.out.println("\n******** Total Invoices By Customer Registration Month : JUNE **********");
         System.out.println(invoiceService.getTotalInvoicesByCustomerRegistrationMonth(month));
     }
 
     public static void printAllInvoices() {
+        System.out.println("\n******** Get All Invoices **********");
         invoiceService.getAll().stream().forEach(i ->
                 System.out.println(i.getId() + "\t" + i.getAmount() + "\t\t" + i.getCustomer().getName())
         );
     }
 
     public static void printInvoicesOverAmount(BigDecimal amount) {
+        System.out.println("\n******** Get Invoices Over Amount : 1500 **********");
         invoiceService.getInvoicesOverAmount(amount).stream().forEach(i ->
                 System.out.println(i.getId() + "\t" + i.getAmount() + "\t" + i.getCustomer().getName())
         );
     }
 
     public static void printAverageOfInvoicesOverAmount(BigDecimal amount) {
+        System.out.println("\n******** Get Average of Invoices Over Amount : 1500 **********");
         System.out.println(invoiceService.getAverageOfInvoicesOverAmount(amount));
     }
 
     public static void printCustomersHaveInvoicesOverAmount(BigDecimal amount) {
+        System.out.println("\n******** Get Customers Have Invoices Under Amount : 500 **********");
         customerService.getCustomerHaveInvoiceUnderAmount(amount).stream().forEach(c ->
                 System.out.println(c.getName())
         );
     }
 
     public static void printSectorsOfCompaniesHaveUnderAverageAmountOfInvoices(BigDecimal amount) {
+        System.out.println("\n******** Get Sectors of Companies Have Under Average Amount of Invoices : 750 **********");
         sectorService.getSectorOfCompaniesHaveInvoicesUnderAverageAmount(amount).stream().forEach(s ->
                 System.out.println(s.getName())
         );
